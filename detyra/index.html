@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treasure Hunt - Tiranë</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Background grid texture -->
+  <div class="bg-grid"></div>
+
+  <!-- Floating gold particles -->
+  <div class="particle" style="--x:5%;  --y:15%; --s:4px; --d:4.1s;"></div>
+  <div class="particle" style="--x:18%; --y:72%; --s:3px; --d:5.3s;"></div>
+  <div class="particle" style="--x:35%; --y:40%; --s:5px; --d:3.8s;"></div>
+  <div class="particle" style="--x:60%; --y:20%; --s:3px; --d:6.1s;"></div>
+  <div class="particle" style="--x:78%; --y:60%; --s:4px; --d:4.7s;"></div>
+  <div class="particle" style="--x:90%; --y:30%; --s:3px; --d:5.5s;"></div>
+  <div class="particle" style="--x:50%; --y:85%; --s:5px; --d:3.3s;"></div>
+
+  <!-- Win overlay -->
+  <div id="win-overlay" class="hidden">
+    <div class="win-card">
+      <div class="win-trophy">🏆</div>
+      <h2>Thesari u Gjet!</h2>
+      <p id="win-message">—</p>
+      <button id="win-reset-btn">Lojë e Re ↺</button>
+    </div>
+  </div>
+
+  <!-- App shell -->
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-icon">🗺️</div>
+      <div class="header-text">
+        <h1>Treasure Hunt</h1>
+        <div class="subtitle">Tiranë, Shqipëri &nbsp;·&nbsp; Gjej thesarin e fshehur</div>
+      </div>
+      <div class="header-badge">
+        <div class="badge-dot"></div>
+        <span id="attempts-label">0 tentativa</span>
+      </div>
+    </header>
+
+    <!-- Map -->
+    <div id="map-wrapper">
+      <div class="map-corner-tl"></div>
+      <div class="map-corner-tr"></div>
+      <div class="map-corner-bl"></div>
+      <div class="map-corner-br"></div>
+      <div id="map"></div>
+      <div id="overlay-msg">
+        <span id="overlay-icon">🧭</span>
+        <span id="overlay-text">Kliko në hartë për të gjetur thesarin!</span>
+      </div>
+    </div>
+
+    <!-- Status panel -->
+    <div id="status-panel">
+      <div class="status-icon-wrap" id="status-icon">🧭</div>
+      <div class="status-content">
+        <span id="message">Kliko në hartë për të gjetur thesarin!</span>
+        <div class="distance-bar-wrap">
+          <div class="distance-bar-track">
+            <div class="distance-bar-fill" id="distance-bar"></div>
+          </div>
+          <span class="distance-label" id="distance-label">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions row -->
+    <div class="actions-row">
+      <button id="reset-btn">
+        <span class="btn-icon">↺</span> Lojë e Re
+      </button>
+      <div class="hint-chips">
+        <span class="chip cold">❄️ Shumë larg</span>
+        <span class="chip warm">🟡 Afër</span>
+        <span class="chip hot">🟢 Shumë afër</span>
+        <span class="chip found">🏆 Gjetur</span>
+      </div>
+    </div>
+
+  </div><!-- /.app-shell -->
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
